@@ -29,4 +29,31 @@ const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
 renderer.setSize(sizes.width, sizes.height)
+
+// let time = Date.now();
+//clock 
+const clock = new THREE.Clock();
+
+// Aimations
+const tick = () => {
+    // clock 
+    const elapsedTime = clock.getElapsedTime();
+    // Time
+    // const currentTime =  Date.now();
+    // console.log(time);
+    // const deltaTime = currentTime - time;
+    // time = currentTime;
+    // console.log(deltaTime);
+    // Update object
+    // mesh.rotation.y = elapsedTime * Math.PI * 2;
+    mesh.position.y =  Math.sin(elapsedTime );
+    mesh.position.x =  Math.cos(elapsedTime );
+    camera.lookAt(mesh.position);
+
+
+// Render
 renderer.render(scene, camera)
+window.requestAnimationFrame(tick);
+};
+
+tick();
